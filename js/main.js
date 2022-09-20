@@ -1,26 +1,16 @@
-function getRandomNumber(start, finish) {
-  if (start < 0) {
-    return 'Данная функция не может принимать отрицательное число в качестве параметра';
+function getRandomNumber(min, max) {
+  if (min < 0 || max < 0 || max < min) {
+    return new Error('Invalid arguments');
   }
-  if (finish < 0) {
-    return 'Данная функция не может принимать отрицательное число в качестве параметра';
+  if (min === max) {
+    return min;
   }
-  if (start === finish) {
-    return start;
-  }
-  if (start < finish)
-  {
-    return Math.random(finish, start);
-  }
-  return Math.random(start, finish);
+  return Math.random() * (max - min) + min;
 }
 
 function checkStringLength(str, maxLength) {
-  if (str.length > maxLength) {
-    return false;
-  }
-  return true;
+  return str.length <= maxLength;
 }
 
-getRandomNumber(1,3);
-checkStringLength('Строка',6);
+getRandomNumber(1, 3);
+checkStringLength('Строка', 6);
